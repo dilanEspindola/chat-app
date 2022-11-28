@@ -1,0 +1,9 @@
+.chat-messages-container::-webkit-scrollbar {
+  width: 15px;
+  border-radius: 7px;
+}
+
+.chat-messages-container::-webkit-scrollbar-thumb {
+  background: rgb(16, 14, 39);
+  border-radius: 15px;
+}
