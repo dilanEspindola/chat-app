@@ -12,3 +12,5 @@ export const registerValidation = z.object({
       .min(6, "password must be at least 6 characters"),
   }),
 });
+
+export type RegisterType = z.infer<typeof registerValidation>["body"];
