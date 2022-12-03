@@ -14,3 +14,8 @@ export const setUser = async (data: UserInterface): Promise<void> => {
   const newUser = userRepository.create(data);
   await userRepository.save(newUser);
 };
+
+export const getUserByEmail = async (email: string): Promise<User | null> => {
+  const getUser = await userRepository.findOneBy({ email });
+  return getUser;
+};

@@ -3,5 +3,5 @@ export interface FormData {
   username: string;
   email: string;
   password: string;
-  photo: FileList;
+  photo: File;
 }

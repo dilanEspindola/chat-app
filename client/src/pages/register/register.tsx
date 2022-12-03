@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import { useImageSize } from "react-image-size";
 import { errorNotification } from "@/utils/";
 import { FormData } from "@/interfaces";
+import { registerUser } from "@/services/";
 
 const Register = () => {
   const [showFile, setShowFile] = useState<any>();
@@ -22,13 +23,15 @@ const Register = () => {
     const img = evt.target.files;
     if (img?.length !== 0) {
       setFile(img);
+      console.log(img);
+
       setShowFile(URL.createObjectURL(img![0]));
     }
   };
 
-  const onSubmit = (registerData: FormData) => {
-    const data = { ...registerData, photo: file };
-    console.log(data);
+  const onSubmit = async (dataInfo: FormData) => {
+    const data = { ...dataInfo, photo: file![0] };
+    await registerUser(data);
   };
 
   useEffect(() => {

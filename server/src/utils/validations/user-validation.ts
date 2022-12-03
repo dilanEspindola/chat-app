@@ -13,4 +13,16 @@ export const registerValidation = z.object({
   }),
 });
 
+export const LoginValidation = z.object({
+  body: z.object({
+    email: z
+      .string({ required_error: "email is required" })
+      .email("type a valid email"),
+    password: z
+      .string({ required_error: "password is required" })
+      .min(6, "password must be at least 6 characters"),
+  }),
+});
+
 export type RegisterType = z.infer<typeof registerValidation>["body"];
+export type LoginType = z.infer<typeof LoginValidation>["body"];

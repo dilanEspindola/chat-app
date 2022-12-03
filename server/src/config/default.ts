@@ -14,4 +14,7 @@ export default {
     API_KEY: <string>process.env.API_KEY,
     API_SECRET: <string>process.env.API_SECRET,
   },
+  TOKEN: {
+    TOKEN_KEY: <string>process.env.TOKEN_SECRET,
+  },
 };
