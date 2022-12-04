@@ -13,11 +13,12 @@ export const login = async (
     const { email, password } = req.body;
     const user = await getUserByEmail(email);
 
-    if (!user) return res.status(404).json({ message: "USER_NOT_FOUND" });
+    if (!user)
+      return res.status(404).json({ message: "USER_NOT_FOUND", auth: false });
 
     const getPassword = await comparePassword(password, user["password"]);
     if (!getPassword)
-      return res.status(401).json({ message: "USER_UNAUTHORIZED" });
+      return res.status(401).json({ message: "WRONG_PASSWORD", auth: false });
 
     const token = generateToken<Token>({
       email: user.email,
@@ -26,7 +27,7 @@ export const login = async (
 
     const { password: passwordUser, ...rest } = user;
 
-    return res.status(200).json({ token, user: rest });
+    return res.status(200).json({ token, user: rest, auth: true });
   } catch (error: any) {
     console.log(error.message);
     return res.status(500).json({ message: "INTERNAL_SERVER_ERROR" });

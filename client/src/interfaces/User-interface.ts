@@ -1,3 +1,10 @@
+export interface User {
+  id: number;
+  fullname: string;
+  username: string;
+  photo: string;
+}
+
 export interface FormData {
   fullname: string;
   username: string;
@@ -5,3 +12,8 @@ export interface FormData {
   password: string;
   photo: File;
 }
+
+export type UserLogin = {
+  email: string;
+  password: string;
+};
